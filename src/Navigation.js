@@ -1,11 +1,9 @@
 import React from "react";
 import { Nav } from "react-bootstrap";
-
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Navigation() {
     return (
-        //className="flex nav"
         <Nav>
             <Nav.Item>
                 <Nav.Link>
