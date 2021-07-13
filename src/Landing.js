@@ -1,5 +1,5 @@
 import "firebase/firestore";
-import React from "react";
+import React, { useEffect } from "react";
 import Datetime from "react-datetime";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { useHistory } from "react-router-dom";
@@ -15,11 +15,15 @@ function Landing() {
         router.push(`/day/${day.toISOString()}`);
     }
 
+    useEffect(() => {
+        console.log(tasks);
+    }, [tasks]);
+
     return (
         <>
             <h1>Where is Whiskey right now?</h1>
             <h3>
-                {tasks?.[0]?.type === "walk start"
+                {tasks?.[0]?.task === "walk start"
                     ? `Out on a walk with ${tasks?.[0].person}`
                     : "At home"}
             </h3>
