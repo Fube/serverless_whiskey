@@ -2,18 +2,23 @@
 # https://github.com/firebase/firebase-tools
 
 name: Deploy to Firebase Hosting on merge
-'on':
-  push:
-    branches:
-      - master
+"on":
+    push:
+        branches:
+            - master
 jobs:
-  build_and_deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_WHISKEY_ECE56 }}'
-          channelId: live
-          projectId: whiskey-ece56
+    build_and_deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - name: Use Node
+              uses: actions/setup-node@v1
+            - name: Install
+              run: yarn install
+            - name: Deploy
+              uses: mohammed-atif/firebase-publish-react@v1.0
+              with:
+                  repoToken: "${{ secrets.GITHUB_TOKEN }}"
+                  firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_WHISKEY_ECE56 }}"
+                  channelId: live
+                  projectId: whiskey-ece56
