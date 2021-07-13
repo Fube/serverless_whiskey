@@ -18,7 +18,4 @@ jobs:
             - name: Deploy
               uses: mohammed-atif/firebase-publish-react@v1.0
               with:
-                  repoToken: "${{ secrets.GITHUB_TOKEN }}"
-                  firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_WHISKEY_ECE56 }}"
-                  channelId: live
-                  projectId: whiskey-ece56
+                  firebase-token: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_WHISKEY_ECE56 }}"
